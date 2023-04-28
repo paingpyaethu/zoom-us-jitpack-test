@@ -1,7 +1,21 @@
-before_install:
-  - git lfs pull
+# before_install:
+#   - git lfs pull
 
-install:
-  - VERSION="-Dversion=5.13.1.11014"
-  - mvn install:install-file -Dfile=libs/commonlib.aar -DgroupId=com.zoom-community.sdk -DartifactId=commonlib $VERSION -Dpackaging=aar -DgeneratePom=true
-  - mvn install:install-file -Dfile=libs/mobilertc.aar -DgroupId=com.zoom-community.sdk -DartifactId=mobilertc $VERSION -Dpackaging=aar -DgeneratePom=true
+# install:
+#   - VERSION="-Dversion=5.13.1.11014"
+#   - mvn install:install-file -Dfile=libs/commonlib.aar -DgroupId=com.zoom-community.sdk -DartifactId=commonlib $VERSION -Dpackaging=aar -DgeneratePom=true
+#   - mvn install:install-file -Dfile=libs/mobilertc.aar -DgroupId=com.zoom-community.sdk -DartifactId=mobilertc $VERSION -Dpackaging=aar -DgeneratePom=true
+
+build:
+  script: ./gradlew assembleRelease
+
+artifacts:
+  - file: libs/commonlib.aar
+    groupId: com.zoom-community.sdk
+    artifactId: commonlib
+    version: 5.13.1.11014
+
+  - file: libs/mobilertc.aar
+    groupId: com.zoom-community.sdk
+    artifactId: mobilertc
+    version: 5.13.1.11014
